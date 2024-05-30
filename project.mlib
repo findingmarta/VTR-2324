@@ -29,7 +29,7 @@
                                                 type="RENDERER"
                                                 component="PROJECTION_VIEW_MODEL" />
 
-                                        <valueof uniform="ldir"
+                                        <valueof uniform="l_dir"
                                                 type="LIGHT"
                                                 component="NORMALIZED_DIRECTION" 
                                                 id="0" /> <!-- luz 0, caso tenha várias luzes ou então utilizar context="Sun" -->
@@ -45,9 +45,7 @@
                                         <valueof uniform="m_viewModel"  
                                                 type="RENDERER"
                                                 component="VIEW_MODEL" />
-
-                                        <!-- context can also be the current material: context="simple::v2" --> 
-                                        <!-- note that when using injection maps we want the color of the original material-->       
+  
                                         <valueof uniform="diffuse"
                                                 type="COLOR"
                                                 context="CURRENT" 
@@ -57,7 +55,10 @@
                                                 component = "SPECULAR" />
 
                                         <valueof uniform="shininess" type="COLOR"
-                                                component = "SHININESS" />                            
+                                                component = "SHININESS" /> 
+
+                                        <valueof uniform="num_shades" type="RENDERER"
+                                                component="num_shades" />                           
                                 </values>
                         </shader>
 
@@ -78,7 +79,7 @@
                                                 type="RENDERER"
                                                 component="PROJECTION_VIEW_MODEL" />
 
-                                        <valueof uniform="ldir"
+                                        <valueof uniform="l_dir"
                                                 type="LIGHT"
                                                 component="NORMALIZED_DIRECTION" 
                                                 id="0" />

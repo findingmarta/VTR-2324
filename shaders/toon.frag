@@ -6,6 +6,7 @@ uniform vec4 specular;
 uniform vec4 l_dir; // world space
 uniform mat4 m_view;
 uniform float shininess = 128.0;
+uniform int num_shades;
 
 // input
 in vec3 n;
@@ -16,12 +17,11 @@ out vec4 color;
 
 void main() {
     vec3 nn = normalize(n); // camera space
-
     vec3 ne = normalize(e);
 
     // Put all the vectors in the same space (camera space)
-    //vec3 ld = normalize(vec3(m_view * -light_dir)); // - para ser a direção para a luz e não da luz
-    vec3 ld = normalize(light_dir);
+    vec3 ld = normalize(vec3(m_view * -l_dir)); // - para ser a direção para a luz e não da luz
+    //vec3 ld = normalize(light_dir);
     
     float intensity = max(dot(nn,ld),0.0);
 
@@ -35,21 +35,7 @@ void main() {
 
     // Toon shading
     // Given the number of shades, we can calculate the intensity of the light
-    int number_of_shades = 5;
-    //intensity = floor(intensity * number_of_shades) / number_of_shades;
-
-    if (intensity > 0.95) {
-        intensity = 1.0;
-    } else if (intensity > 0.75) {
-        intensity = 0.75;
-    } 
-    else if (intensity > 0.5) {
-        intensity = 0.50;
-    } else if (intensity > 0.25) {
-        intensity = 0.25;
-    } else {
-        intensity = 0.1;
-    }
+    intensity = floor(intensity * num_shades) / num_shades;
 
     color = intensity * diffuse + specInt;
 }
