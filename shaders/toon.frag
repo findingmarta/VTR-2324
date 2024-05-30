@@ -33,6 +33,11 @@ void main() {
         specInt = specular * pow(cos_alfa,shininess);
     }
 
+    // Toon shading
+    // Given the number of shades, we can calculate the intensity of the light
+    int number_of_shades = 5;
+    //intensity = floor(intensity * number_of_shades) / number_of_shades;
+
     if (intensity > 0.95) {
         intensity = 1.0;
     } else if (intensity > 0.75) {

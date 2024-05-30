@@ -1,7 +1,11 @@
 <?xml version="1.0" ?>
-<project name="Screen-Space Ambient Oclusion" width="1920" height="2080">
+<project name="Non-Photorealistic Rendering" width="1920" height="2080">
 	<assets>
 	
+	    <!-- <attributes>
+            <attribute name="num_divisions" type="RENDERER" data="INT" value="4" />
+		</attributes> -->
+
 		<scenes>
 			<scene name="teapot" param="SWAP_YZ UNITIZE">
 				<file name="models/teapot.3ds"/>
@@ -39,7 +43,7 @@
 	
 	<pipelines>
 		<pipeline name="NPR" default="true">
-			<pass class="default" name="pass1">
+			<pass class="default" name="toonPass">
 				<scenes>
 					<scene name ="teapot" />  
 				</scenes>
@@ -56,7 +60,7 @@
 			</pass>
 
 
-			<pass class="default" name="pass2">
+			<pass class="default" name="hatchPass">
 				<scenes>
 					<scene name ="teapot" />  
 				</scenes>
@@ -74,4 +78,11 @@
 			
 		</pipeline>
 	</pipelines>
+
+	<!-- <interface>
+        <window label="Division settings">
+            <var label="Num  Divisions" type="RENDERER" context="CURRENT" component="num_divisions" def="step=1 min=2 max=15" />
+        </window>
+    </interface> -->
+
 </project>
