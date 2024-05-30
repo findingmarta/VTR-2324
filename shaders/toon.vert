@@ -18,16 +18,12 @@ out vec3 e, light_dir;
 
 void main() {
     // Put all the vectors in the same space (camera space)
-    vec4 pos = m_viewModel * position;
-    vec4 l_pos = m_view * l_posicao;
-
-
+    //vec4 pos = m_viewModel * position;
+    //vec4 l_pos = m_view * l_posicao;
     // Calcular direção da luz
-    light_dir = vec3(l_pos - pos);
+    //light_dir = vec3(l_pos - pos);
     
     n = normalize(m_normal * normal);
-    e = -vec3(pos);
-
-
+    e = -vec3(m_viewModel * position);
     gl_Position = m_pvm * position;
 }

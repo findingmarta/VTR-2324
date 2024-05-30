@@ -2,9 +2,9 @@
 <project name="Non-Photorealistic Rendering" width="1920" height="2080">
 	<assets>
 	
-	    <!-- <attributes>
-            <attribute name="num_divisions" type="RENDERER" data="INT" value="4" />
-		</attributes> -->
+	    <attributes>
+            <attribute name="num_shades" type="RENDERER" data="INT" value="4" />
+		</attributes>
 
 		<scenes>
 			<scene name="teapot" param="SWAP_YZ UNITIZE">
@@ -22,15 +22,15 @@
 			<camera name="MainCamera" >
 				<viewport name="MainViewport" />
 				<projection TYPE="PERSPECTIVE" FOV="60.0" NEAR="0.3" FAR="100.0" />
-				<POSITION x="0" y="16.45" z="10" />
+				<POSITION x="0" y="1" z="5" />
                 <LOOK_AT_POINT x = "0" y="0" z="0" />
-				<VIEW x="0.289735" y="-0.889418" z="-0.874304" />
+				<VIEW x="0" y="0" z="-1" />
 			</camera>
 		</cameras>
 		
 		<lights>
 			<light name="Sun" type="directional">
-				<DIRECTION x="0" y="-1.5" z="0" />
+				<DIRECTION x="-3" y="-3" z="-3" />
 				<COLOR r="0.9" g="0.9" b="0.9" />
 			</light>
 		</lights>
@@ -60,7 +60,7 @@
 			</pass>
 
 
-			<pass class="default" name="hatchPass">
+			<!-- <pass class="default" name="hatchPass">
 				<scenes>
 					<scene name ="teapot" />  
 				</scenes>
@@ -74,15 +74,15 @@
                         <shader fromLibrary="NPR" fromMaterial="hatch" />
                     </map>
                 </injectionMaps>
-			</pass>
+			</pass> -->
 			
 		</pipeline>
 	</pipelines>
 
-	<!-- <interface>
-        <window label="Division settings">
-            <var label="Num  Divisions" type="RENDERER" context="CURRENT" component="num_divisions" def="step=1 min=2 max=15" />
+	<interface>
+        <window label="Settings">
+            <var label="Number Of Shades" type="RENDERER" context="CURRENT" component="num_shades" def="step=1 min=2 max=15" />
         </window>
-    </interface> -->
+    </interface>
 
 </project>
