@@ -1,0 +1,110 @@
+<?xml version="1.0" ?>
+<materialLib name="NPR">
+
+    <shaders>
+        <shader name="toon" vs="shaders/toon.vert" ps="shaders/toon.frag" />
+        <shader name="hatch" vs="shaders/hatch.vert" ps="shaders/hatch.frag" />
+    </shaders>
+
+    <textures>
+		<texture name="teapot" filename="textures/teapot.jpg"  mipmap="true"/>
+	</textures>
+
+    <materials>
+        <material name="toon">
+            <color>
+                <DIFFUSE r="0.3" g="0.8" b="0.4" />
+            </color>
+
+            <shader name="toon" >
+                <values>
+                    <valueof uniform="m_pvm"
+                            type="RENDERER"
+                            component="PROJECTION_VIEW_MODEL" />
+
+                    <valueof uniform="ldir"
+                            type="LIGHT"
+                            component="NORMALIZED_DIRECTION" 
+                            id="0" /> <!-- luz 0, caso tenha várias luzes ou então utilizar context="Sun" -->
+
+                    <valueof uniform="m_view"
+                            type="RENDERER"
+                            component="VIEW" />
+
+                    <valueof uniform="m_normal"  
+                            type="RENDERER"
+                            component="NORMAL" /> <!-- ver documentação -->
+
+                    <valueof uniform="m_viewModel"  
+                            type="RENDERER"
+                            component="VIEW_MODEL" />
+
+                    <!-- context can also be the current material: context="simple::v2" --> 
+                    <!-- note that when using injection maps we want the color of the original material-->       
+                    <valueof uniform="diffuse"
+                            type="COLOR"
+                            context="CURRENT" 
+                            component="DIFFUSE" />
+
+                    <valueof uniform="specular" type="COLOR"
+                            component = "SPECULAR" />
+
+                    <valueof uniform="shininess" type="COLOR"
+                            component = "SHININESS" />                            
+                </values>
+            </shader>
+
+            <textures>
+                <texture name="teapot" UNIT="0"/>
+            </textures>
+        </material>
+
+
+        <material name="hatch">
+            <color>
+                <DIFFUSE r="0.3" g="0.8" b="0.4" />
+            </color>
+
+            <shader name="hatch" >
+                <values>
+                    <valueof uniform="m_pvm"
+                            type="RENDERER"
+                            component="PROJECTION_VIEW_MODEL" />
+
+                    <valueof uniform="ldir"
+                            type="LIGHT"
+                            component="NORMALIZED_DIRECTION" 
+                            id="0" />
+
+                    <valueof uniform="m_view"
+                            type="RENDERER"
+                            component="VIEW" />
+
+                    <valueof uniform="m_normal"  
+                            type="RENDERER"
+                            component="NORMAL" />
+
+                    <valueof uniform="m_viewModel"  
+                            type="RENDERER"
+                            component="VIEW_MODEL" />
+                             
+                    <valueof uniform="diffuse"
+                            type="COLOR"
+                            context="CURRENT" 
+                            component="DIFFUSE" />
+
+                    <valueof uniform="specular" type="COLOR"
+                            component = "SPECULAR" />
+
+                    <valueof uniform="shininess" type="COLOR"
+                            component = "SHININESS" />                            
+                </values>
+            </shader>
+
+            <textures>
+                <texture name="teapot" UNIT="0"/>
+            </textures>
+
+        </material>
+    </materials>
+</materialLib>
