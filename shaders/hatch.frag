@@ -1,7 +1,7 @@
-#version 460
+/*#version 460
 
 // uniforms
-uniform sampler2D tex; 
+uniform sampler2D tex, hatch0, hatch1, hatch2, hatch3, hatch4, hatch5, hatch6; 
 
 uniform int div = 5;
 uniform float width = 0.5;
@@ -61,4 +61,63 @@ void main() {
     color = mix(diffuse, secondary_diffuse, f);
 
 
+}*/
+#version 460
+
+// uniforms
+uniform sampler2D tex, hatch0, hatch1, hatch2, hatch3, hatch4, hatch5, hatch6; 
+uniform vec4 ldir;
+uniform mat4 m_view;
+
+uniform int div = 5;
+uniform float width = 0.5;
+uniform float gap = 0.1; // diminuir o gap para haver menos desfoque
+uniform float factor = 0.5;
+
+
+// interpolated inputs
+in vec2 tc;
+in vec3 n;
+in vec3 e; 
+
+// output
+out vec4 color;
+
+void main() {
+
+    vec3 normal = normalize(n);
+    vec3 l = normalize(vec3(m_view - ldir));
+    float intensity = max(dot(normal,l), 0.0);
+    
+    vec4 h0 = texture(hatch0,texCoord);
+    vec4 h1 = texture(hatch1,texCoord);
+    vec4 h2 = texture(hatch2,texCoord);
+    vec4 h3 = texture(hatch3,texCoord);
+    vec4 h4 = texture(hatch4,texCoord);
+    vec4 h5 = texture(hatch5,texCoord);
+    vec4 h6 = texture(hatch6,texCoord);
+
+    float shades = 1/7;
+
+    vec2 deriv = vec2(dFdx(tc.s*div), dFdy(tc.s*div)); 
+    float len = length(deriv); // comprimento do vetor
+
+    float actualGap = len * factor;
+    f = smoothstep(width-actualGap, width, fr.s) - smoothstep(1-actualGap, 1, fr.s);
+
+    if(intensity < shades){
+        color = mix(h6,h5,f);
+    } else if(intensity < 2*shades){
+        color = mix(h5,h4,f);
+    } else if(intensity < 3*shades){
+        color = mix(h4,h3,f);
+    } else if(intensity < 4*shades){
+        color = mix(h3,h2,f);
+    } else if(intensity < 5*shades){
+        color = mix(h2,h1,f);
+    } else if(intensity < 6*shades){
+        color = mix(h1,h0,f);
+    } else{
+        color = h0;
+    }
 }
