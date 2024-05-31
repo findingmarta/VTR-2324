@@ -8,13 +8,12 @@
 
         <textures>
                 <texture name="teapot" filename="textures/teapot.jpg"  mipmap="true"/>
-                <texture name="hatch0" filename="textures/0.png"  mipmap="true"/>
-                <texture name="hatch1" filename="textures/10.png"  mipmap="true"/>
-                <texture name="hatch2" filename="textures/20.png"  mipmap="true"/>
-                <texture name="hatch3" filename="textures/30.png"  mipmap="true"/>
-                <texture name="hatch4" filename="textures/40.png"  mipmap="true"/>
-                <texture name="hatch5" filename="textures/50.png"  mipmap="true"/>
-                <texture name="hatch6" filename="textures/60.png"  mipmap="true"/>
+                <texture name="hatch0" filename="textures/0.jpg"  mipmap="true"/>
+                <texture name="hatch1" filename="textures/10.jpg"  mipmap="true"/>
+                <texture name="hatch2" filename="textures/20.jpg"  mipmap="true"/>
+                <texture name="hatch3" filename="textures/30.jpg"  mipmap="true"/>
+                <texture name="hatch4" filename="textures/40.jpg"  mipmap="true"/>
+                <texture name="hatch5" filename="textures/50.jpg"  mipmap="true"/>
         </textures>
 
         <materials>
@@ -131,9 +130,6 @@
                                                 component="UNIT"
                                                 id="5" />
                                         
-                                        <valueof uniform="hatch6" type="TEXTURE_BINDING"
-                                                component="UNIT"
-                                                id="6" />
                                 </values>
                         </shader>
 
@@ -145,7 +141,6 @@
                                 <texture name="hatch3" UNIT="3"/>
                                 <texture name="hatch4" UNIT="4"/>
                                 <texture name="hatch5" UNIT="5"/>
-                                <texture name="hatch6" UNIT="6"/>
                         </textures>
 
                 </material>

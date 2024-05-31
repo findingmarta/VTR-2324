@@ -14,19 +14,17 @@ uniform sampler2D hatch6;
 uniform vec4 ldir;
 uniform mat4 m_view;
 
-uniform int div = 5;
-uniform float width = 0.5;
-uniform float gap = 0.1; // diminuir o gap para haver menos desfoque
-uniform float factor = 0.5;
-
 
 // interpolated inputs
 in vec2 tc;
 in vec3 n;
-in vec3 e; 
 
 // output
 out vec4 color;
+
+float f(float intensity, float i, float shades){
+        return (6. * (intensity - (i * shades)));
+    }
 
 void main() {
     vec4 c;
@@ -40,27 +38,22 @@ void main() {
     vec4 h3 = texture(hatch3,tc);
     vec4 h4 = texture(hatch4,tc);
     vec4 h5 = texture(hatch5,tc);
-    vec4 h6 = texture(hatch6,tc);
 
-    float shades = 1./7.;
+    float shades = 1./6.; 
+    //float f = mod(intensity,shades)/shades;
 
-
-    float f = mod(intensity,shades)/shades;
-
-    if(intensity < shades){
-        c = mix(h6,h5,f);
-    } else if(intensity < 2*shades){
-        c = mix(h5,h4,f);
-    } else if(intensity < 3*shades){
-        c = mix(h4,h3,f);
-    } else if(intensity < 4*shades){
-        c = mix(h3,h2,f);
-    } else if(intensity < 5*shades){
-        c = mix(h2,h1,f);
-    } else if(intensity < 6*shades){
-        c = mix(h1,h0,f);
-    } else{
-        c = h0;
+    if(intensity <= shades){
+        c = mix(h5,h4,f(intensity,0.,shades));
+    } else if(intensity <= 2*shades){
+        c = mix(h4,h3,f(intensity,1.,shades));
+    } else if(intensity <= 3*shades){
+        c = mix(h3,h2,f(intensity,2.,shades));
+    } else if(intensity <= 4*shades){
+        c = mix(h2,h1,f(intensity,3.,shades));
+    } else if(intensity <= 5*shades){
+        c = mix(h1,h0,f(intensity,4.,shades));
+    }else if(intensity <= 6*shades){
+        c = mix(h0,vec4(1.),f(intensity,5.,shades));
     }
 
     color = vec4( c.rgb, 1. );
