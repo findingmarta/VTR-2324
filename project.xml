@@ -60,7 +60,7 @@
 			</pass>
 
 
-			<!-- <pass class="default" name="hatchPass">
+			<pass class="default" name="hatchPass">
 				<scenes>
 					<scene name ="teapot" />  
 				</scenes>
@@ -68,13 +68,16 @@
 				<lights>
 					<light name="Sun" />
 				</lights>
-
+<!-- 
                 <injectionMaps>
                     <map toMaterial="*">
                         <shader fromLibrary="NPR" fromMaterial="hatch" />
                     </map>
-                </injectionMaps>
-			</pass> -->
+                </injectionMaps> -->
+				<materialMaps>
+					<map fromMaterial="*" toMaterial="hatch" toLibrary="NPR" />
+				</materialMaps>
+			</pass>
 			
 		</pipeline>
 	</pipelines>

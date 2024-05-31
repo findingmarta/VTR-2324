@@ -68,7 +68,7 @@
                 </material>
 
 
-                <material name="hatch">
+		<material name="hatch">
                         <color>
                                 <DIFFUSE r="0.3" g="0.8" b="0.4" />
                         </color>
@@ -79,7 +79,7 @@
                                                 type="RENDERER"
                                                 component="PROJECTION_VIEW_MODEL" />
 
-                                        <valueof uniform="l_dir"
+                                        <valueof uniform="ldir"
                                                 type="LIGHT"
                                                 component="NORMALIZED_DIRECTION" 
                                                 id="0" />

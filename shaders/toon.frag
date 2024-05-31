@@ -1,6 +1,6 @@
 #version 460
 
-//uniform
+//uniforms
 uniform vec4 diffuse;
 uniform vec4 specular;
 uniform vec4 l_dir; // world space
@@ -10,18 +10,18 @@ uniform int num_shades;
 
 // input
 in vec3 n;
-in vec3 e, light_dir;
+in vec3 e;
 
 // output
 out vec4 color;
 
 void main() {
-    vec3 nn = normalize(n); // camera space
+    // camera space
+    vec3 nn = normalize(n); 
     vec3 ne = normalize(e);
 
     // Put all the vectors in the same space (camera space)
     vec3 ld = normalize(vec3(m_view * -l_dir)); // - para ser a direção para a luz e não da luz
-    //vec3 ld = normalize(light_dir);
     
     float intensity = max(dot(nn,ld),0.0);
 
