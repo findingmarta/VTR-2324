@@ -78,6 +78,21 @@
 					<map fromMaterial="*" toMaterial="hatch" toLibrary="NPR" />
 				</materialMaps>
 			</pass>
+
+			<pass class="default" name="goochPass">
+				<scenes>
+					<scene name ="teapot" />  
+				</scenes>
+				<camera name="MainCamera" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<injectionMaps>
+                    <map toMaterial="*">
+                        <shader fromLibrary="NPR" fromMaterial="gooch" />
+                    </map>
+                </injectionMaps>
+			</pass>
 			
 		</pipeline>
 	</pipelines>
