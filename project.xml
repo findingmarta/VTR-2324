@@ -4,6 +4,8 @@
 	
 	    <attributes>
             <attribute name="num_shades" type="RENDERER" data="INT" value="4" />
+			<attribute name="alpha" type="RENDERER" data="FLOAT" value="0.2" />
+			<attribute name="beta" type="RENDERER" data="FLOAT" value="0.6" />
 		</attributes>
 
 		<scenes>
@@ -98,8 +100,12 @@
 	</pipelines>
 
 	<interface>
-        <window label="Settings">
+        <window label="Toon Settings">
             <var label="Number Of Shades" type="RENDERER" context="CURRENT" component="num_shades" def="step=1 min=2 max=15" />
+        </window>
+		<window label="Gooch Settings">
+            <var label="alpha" type="RENDERER" context="CURRENT" component="alpha" def="step=0.01 min=0 max=1" />
+			<var label="beta" type="RENDERER" context="CURRENT" component="beta" def="step=0.01 min=0 max=1" />
         </window>
     </interface>
 

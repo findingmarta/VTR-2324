@@ -184,6 +184,12 @@
 
                                         <valueof uniform="shininess" type="COLOR"
                                                 component = "SHININESS" />  
+
+                                        <valueof uniform="alpha" type="RENDERER"
+                                                component = "alpha" />  
+
+                                        <valueof uniform="beta" type="RENDERER"
+                                                component = "beta" />  
                                         
                                 </values>
                         </shader>
