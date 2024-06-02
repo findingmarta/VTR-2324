@@ -7,8 +7,9 @@ uniform vec4 l_dir; // world space
 uniform mat4 m_view;
 uniform float shininess = 128.0;
 uniform int num_shades;
-uniform vec4 blue = vec4(0,0,0.6,1.0);
-uniform vec4 yellow = vec4(0.4,0.4,0,1.0);
+
+uniform float blue_b;
+uniform float yellow_rg;
 uniform float alpha;
 uniform float beta;
 
@@ -21,6 +22,10 @@ in vec3 l;
 out vec4 color;
 
 void main() {
+
+    vec4 blue = vec4(0,0,blue_b,1.0);
+    vec4 yellow = vec4(yellow_rg,yellow_rg,0,1.0);
+
     
     vec3 nn = normalize(n); 
     vec3 ne = normalize(e);

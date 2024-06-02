@@ -6,6 +6,8 @@
             <attribute name="num_shades" type="RENDERER" data="INT" value="4" />
 			<attribute name="alpha" type="RENDERER" data="FLOAT" value="0.2" />
 			<attribute name="beta" type="RENDERER" data="FLOAT" value="0.6" />
+			<attribute name="blue_b" type="RENDERER" data="FLOAT" value="0.4" />
+			<attribute name="yellow_rg" type="RENDERER" data="FLOAT" value="0.4" />
 		</attributes>
 
 		<scenes>
@@ -106,6 +108,8 @@
 		<window label="Gooch Settings">
             <var label="alpha" type="RENDERER" context="CURRENT" component="alpha" def="step=0.01 min=0 max=1" />
 			<var label="beta" type="RENDERER" context="CURRENT" component="beta" def="step=0.01 min=0 max=1" />
+			<var label="blue_b" type="RENDERER" context="CURRENT" component="blue_b" def="step=0.01 min=0 max=1" />
+			<var label="yellow_rg" type="RENDERER" context="CURRENT" component="yellow_rg" def="step=0.01 min=0 max=1" />
         </window>
     </interface>
 

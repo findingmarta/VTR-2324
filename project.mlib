@@ -190,7 +190,13 @@
 
                                         <valueof uniform="beta" type="RENDERER"
                                                 component = "beta" />  
+
+                                        <valueof uniform="blue_b" type="RENDERER"
+                                                component = "blue_b" />  
                                         
+                                        <valueof uniform="yellow_rg" type="RENDERER"
+                                                component = "yellow_rg" />  
+
                                 </values>
                         </shader>
                 </material>
