@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<project name="Non-Photorealistic Rendering" width="1920" height="2080">
+	<assets>
+
+	    <attributes>
+            <attribute name="pixelSize" type="RENDERER" data="INT" value="5" />
+		</attributes>
+
+		<scenes>
+			<scene name="teapot" param="SWAP_YZ UNITIZE">
+				<file name="../models/teapot.3ds"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" /> <!-- white window when launched -->
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<projection TYPE="PERSPECTIVE" FOV="60.0" NEAR="0.3" FAR="100.0" />
+				<POSITION x="0" y="1" z="5" />
+                <LOOK_AT_POINT x = "0" y="0" z="0" />
+				<VIEW x="0" y="0" z="-1" />
+			</camera>
+		</cameras>
+
+		<lights>
+			<light name="Sun" type="directional">
+				<DIRECTION x="-3" y="-3" z="-3" />
+				<COLOR r="0.9" g="0.9" b="0.9" />
+			</light>
+		</lights>
+		
+		<materialLibs>
+			<materialLib filename = "project.mlib"/>
+		</materialLibs> 
+
+	</assets>
+	
+	<pipelines>
+		<pipeline name="NPR" default="true">
+			<pass class="default" name="pixelPass" >
+				<scenes>
+					<scene name ="teapot" />  
+				</scenes>
+				<camera name="MainCamera" />
+				<materialMaps>
+					<map fromMaterial="*" toMaterial="pixel" toLibrary="NPR" />
+				</materialMaps>
+			</pass>
+		</pipeline>
+	</pipelines>
+
+	<interface>
+        <window label="Pixelation Settings">
+            <var label="Pixel Size" type="RENDERER" context="CURRENT" component="pixelSize" def="step=2 min=1 max=15" />
+        </window>
+    </interface>
+</project>

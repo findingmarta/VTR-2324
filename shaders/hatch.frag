@@ -9,7 +9,6 @@ uniform sampler2D hatch2;
 uniform sampler2D hatch3;
 uniform sampler2D hatch4;
 uniform sampler2D hatch5;
-uniform sampler2D hatch6;
 
 uniform vec4 ldir;
 uniform mat4 m_view;

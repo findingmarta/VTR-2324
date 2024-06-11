@@ -4,7 +4,6 @@ uniform sampler2D teapot;
 
 in vec2 texCoordV;
 
-
 out vec4 color;
 
 void make_kernel(inout vec4 n[9], sampler2D teapot, vec2 coord) {

@@ -2,7 +2,6 @@
 
 // uniforms
 uniform	mat4 m_pvm;
-uniform mat3 m_normal;
 
 // input streams
 in vec4 position;	// local space
