@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<materialLib name="NPR">
+        <shaders>
+                <shader name="sobel" vs="sobel.vert" ps="sobel.frag" />
+        </shaders>
+
+        <textures>
+                <texture name="teapot" filename="../textures/teapot.jpg"  mipmap="true"/>
+        </textures>
+
+        <materials>
+
+		<material name="sobel">
+			<shader name="sobel">
+				<values>
+					<valueof uniform="m_pvm" type="RENDERER" context="CURRENT" 
+                                                component="PROJECTION_VIEW_MODEL" />
+
+					<valueof uniform="moments" type="TEXTURE_BINDING" context="CURRENT" 
+						id="1" component="UNIT" />	
+
+					<valueof uniform="width" type="TEXTURE" context="CURRENT" 
+						id="1" component="WIDTH" />	
+
+					<valueof uniform="height" type="TEXTURE" context="CURRENT" 
+						id="1" component="HEIGHT" />	
+
+                                        <valueof uniform="teapot" type="TEXTURE_BINDING"
+                                                component="UNIT" id="1" />
+				</values>
+			</shader>
+			<textures>
+                                <texture name="teapot" UNIT="1"/>
+			</textures>
+		</material>
+        </materials>
+</materialLib>

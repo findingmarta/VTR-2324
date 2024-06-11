@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
 <materialLib name="NPR">
-
         <shaders>
                 <shader name="toon" vs="shaders/toon.vert" ps="shaders/toon.frag" />
                 <shader name="hatch" vs="shaders/hatch.vert" ps="shaders/hatch.frag" />
                 <shader name="gooch" vs="shaders/gooch.vert" ps="shaders/gooch.frag" />
+                <shader name="sobel" vs="shaders/sobel.vert" ps="shaders/sobel.frag" />
         </shaders>
 
         <textures>
@@ -135,7 +135,6 @@
                         </shader>
 
                         <textures>
-                                <texture name="teapot" UNIT="7"/>
                                 <texture name="hatch0" UNIT="0"/>
                                 <texture name="hatch1" UNIT="1"/>
                                 <texture name="hatch2" UNIT="2"/>

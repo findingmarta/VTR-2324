@@ -17,14 +17,26 @@
 		</scenes>
 		
 		<viewports>
-			<viewport name="MainViewport">
+			<viewport name="Viewport1">
 				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" /> <!-- white window when launched -->
+				<SIZE width=".33"  height="1" />
+			</viewport>
+
+			<viewport name="Viewport2">
+				<ORIGIN  x="0.33" y="0" />
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" /> <!-- white window when launched -->
+				<SIZE width=".33"  height="1" />
+			</viewport>
+
+			<viewport name="Viewport3">
+				<ORIGIN  x="0.65" y="0" />
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" /> <!-- white window when launched -->
+				<SIZE width=".33"  height="1" />
 			</viewport>
 		</viewports>
 		
 		<cameras>
 			<camera name="MainCamera" >
-				<viewport name="MainViewport" />
 				<projection TYPE="PERSPECTIVE" FOV="60.0" NEAR="0.3" FAR="100.0" />
 				<POSITION x="0" y="1" z="5" />
                 <LOOK_AT_POINT x = "0" y="0" z="0" />
@@ -52,6 +64,7 @@
 					<scene name ="teapot" />  
 				</scenes>
 				<camera name="MainCamera" />
+				<viewport name="Viewport1" />
 				<lights>
 					<light name="Sun" />
 				</lights>
@@ -69,15 +82,11 @@
 					<scene name ="teapot" />  
 				</scenes>
 				<camera name="MainCamera" />
+				<viewport name="Viewport2" />
 				<lights>
 					<light name="Sun" />
 				</lights>
-<!-- 
-                <injectionMaps>
-                    <map toMaterial="*">
-                        <shader fromLibrary="NPR" fromMaterial="hatch" />
-                    </map>
-                </injectionMaps> -->
+
 				<materialMaps>
 					<map fromMaterial="*" toMaterial="hatch" toLibrary="NPR" />
 				</materialMaps>
@@ -88,6 +97,7 @@
 					<scene name ="teapot" />  
 				</scenes>
 				<camera name="MainCamera" />
+				<viewport name="Viewport3" />
 				<lights>
 					<light name="Sun" />
 				</lights>
@@ -96,8 +106,7 @@
                         <shader fromLibrary="NPR" fromMaterial="gooch" />
                     </map>
                 </injectionMaps>
-			</pass>
-			
+			</pass>			
 		</pipeline>
 	</pipelines>
 
