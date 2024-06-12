@@ -16,21 +16,12 @@
 					<valueof uniform="m_pvm" type="RENDERER" context="CURRENT" 
                                                 component="PROJECTION_VIEW_MODEL" />
 
-					<valueof uniform="moments" type="TEXTURE_BINDING" context="CURRENT" 
-						id="1" component="UNIT" />	
-
-					<valueof uniform="width" type="TEXTURE" context="CURRENT" 
-						id="1" component="WIDTH" />	
-
-					<valueof uniform="height" type="TEXTURE" context="CURRENT" 
-						id="1" component="HEIGHT" />	
-
-                                        <valueof uniform="teapot" type="TEXTURE_BINDING"
-                                                component="UNIT" id="1" />
+					<valueof uniform="teapot" type="TEXTURE_BINDING"
+							component="UNIT" id="1" />
 				</values>
 			</shader>
 			<textures>
-                                <texture name="teapot" UNIT="1"/>
+				<texture name="teapot" UNIT="1"/>
 			</textures>
 		</material>
         </materials>

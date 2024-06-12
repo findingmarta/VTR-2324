@@ -2,7 +2,7 @@
 
 uniform sampler2D teapot;
 
-in vec2 texCoordV;
+in vec2 texCoord;
 
 out vec4 color;
 
@@ -34,7 +34,7 @@ void make_kernel(inout vec4 n[9], sampler2D teapot, vec2 coord) {
 
 void main(void) {
 	vec4 n[9];
-	make_kernel( n, teapot, texCoordV);
+	make_kernel( n, teapot, texCoord);
 	vec4 sobel_edge_h = n[2] + (2.0*n[5]) + n[8] - (n[0] + (2.0*n[3]) + n[6]);
   	vec4 sobel_edge_v = n[0] + (2.0*n[1]) + n[2] - (n[6] + (2.0*n[7]) + n[8]);
 	vec4 sobel = sqrt((sobel_edge_h * sobel_edge_h) + (sobel_edge_v * sobel_edge_v));

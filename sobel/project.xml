@@ -44,11 +44,9 @@
 					<scene name ="teapot" />  
 				</scenes>
 				<camera name="MainCamera" />
-				<injectionMaps>
-                    <map toMaterial="*">
-                        <shader fromLibrary="NPR" fromMaterial="sobel" />
-                    </map>
-                </injectionMaps>
+				<materialMaps>
+					<map fromMaterial="*" toMaterial="sobel" toLibrary="NPR" />
+				</materialMaps>
 			</pass>
 		</pipeline>
 	</pipelines>
