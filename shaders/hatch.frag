@@ -22,8 +22,8 @@ in vec3 n;
 out vec4 color;
 
 float f(float intensity, float i, float shades){
-        return (6. * (intensity - (i * shades)));
-    }
+    return (6. * (intensity - (i * shades)));
+}
 
 void main() {
     vec4 c;
@@ -39,8 +39,6 @@ void main() {
     vec4 h5 = texture(hatch5,tc);
 
     float shades = 1./6.; 
-    //float f = mod(intensity,shades)/shades;
-
     if(intensity <= shades){
         c = mix(h5,h4,f(intensity,0.,shades));
     } else if(intensity <= 2*shades){

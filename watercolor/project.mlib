@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<materialLib name="NPR">
+		<textures>
+			<texture name="paperTexture" filename="../textures/paperTexture.jpg" mipmap="true"/>
+		</textures>
+
+        <shaders>
+                <shader name="watercolor" vs="watercolor.vert" ps="watercolor.frag" />
+                <shader name="buffer" vs="buffer.vert" ps="buffer.frag" />
+        </shaders>
+
+		<renderTargets>
+			<renderTarget name = "buffer" > <!-- em vez de desenhar para o ecra desenha para a textura -->
+				<SIZE width="512" height="512"/>
+				<CLEAR_VALUES r="0.0" g="0.0" b="0.0" a="0.0"/>
+				<colors>
+					<color name="sceneTexture" internalFormat="RG32F" />
+				</colors>	
+			</renderTarget>
+		</renderTargets>
+
+        <materials>
+
+			<material name="watercolor">
+				<shader name="watercolor">
+					<values>
+						<valueof uniform="m_pvm" type="RENDERER" component="PROJECTION_VIEW_MODEL" />
+						<valueof uniform="bufferTexture" type="TEXTURE_BINDING" component="UNIT" id="0" />
+						<valueof uniform="paperTexture" type="TEXTURE_BINDING" component="UNIT" id="1" />
+					</values>
+				</shader>
+
+				<textures>
+					<texture name="sceneTexture" UNIT="0" fromRenderTarget="true"/>
+					<texture name="paperTexture" UNIT="1"/>
+				</textures>
+			</material>
+
+			<material name="buffer">
+				<shader name="buffer">
+					<values>
+						<valueof uniform="m_pvm" 
+								type="RENDERER" 
+								component="PROJECTION_VIEW_MODEL" />													
+					</values>
+				</shader>
+			</material>
+
+        </materials>
+</materialLib>

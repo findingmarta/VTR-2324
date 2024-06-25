@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<project name="Non-Photorealistic Rendering" width="1920" height="2080">
+	<assets>
+	
+		<attributes>
+            <attribute name="num_shades" type="RENDERER" data="INT" value="10" />
+			<attribute type="RENDERER" name="LineColor" data="VEC4" x="0.0" y="0.0" z="0.0" w="1.0"/>
+			<attribute type="RENDERER" name="PctExtend" data="FLOAT" value="0.492"/>
+			<attribute type="RENDERER" name="EdgeWidth" data="FLOAT" value="0.005"/>
+			<!-- <attribute type="RENDERER" name="NormalThreshold" data="INT" value="0"/> -->
+		</attributes>
+
+		<scenes>
+			<scene name="teapot" param="USE_ADJACENCY UNITIZE SWAP_YZ">
+				<file name="../models/teapot.3ds"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport"/>
+				<projection TYPE="PERSPECTIVE" FOV="60.0" NEAR="0.3" FAR="100.0" />
+				<POSITION x="-1" y="1" z="5" />
+				<VIEW x="0" y="0" z="-1" />
+				<UP x=0 y=1 z=0 />
+				<NEAR value=0.1 />
+				<FAR value=100 />
+			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun" type="directional">
+				<DIRECTION x="-3" y="-3" z="-3" />
+				<COLOR r="0.9" g="0.9" b="0.9" />
+			</light>
+		</lights>
+		
+		<materialLibs>
+			<materialLib filename = "silhouette.mlib"/>
+		</materialLibs> 
+
+	</assets>
+	
+	<pipelines>
+		<pipeline name="Silhouette" default="true">
+			<pass class="default" name="toonPass">
+				<scenes>
+					<scene name ="teapot" />  
+				</scenes>
+				<camera name="MainCamera" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<materialMaps>
+					<map fromMaterial="*" 
+						toMaterial="silhouette" toLibrary="Silhouette" />
+				</materialMaps>
+			</pass>		
+		</pipeline>
+	</pipelines>
+
+	<interface>
+        <window label="settings">
+			<var label="Number Of Shades" type="RENDERER" context="CURRENT" component="num_shades" def="step=1 min=2 max=15" />
+			<var label="Line color" type="RENDERER" context="CURRENT" component="LineColor" mode="COLOR" />
+			<var label="Pct Extend" type="RENDERER" context="CURRENT" component="PctExtend" def="min=0 max=1"/>
+			<var label="Edge Width" type="RENDERER" context="CURRENT" component="EdgeWidth" def="min=0 max=0.1"/>
+			<!-- <var label="Normal Threshold" type="RENDERER" context="CURRENT" component="NormalThreshold" def="min=0 max=1"/> -->
+         </window>
+    </interface>
+
+</project>

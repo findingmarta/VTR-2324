@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<materialLib name="Silhouette">
+        <shaders>
+                <shader name="toon" vs="toon.vert" 
+                                    gs="toon.geom"
+                                    ps="toon.frag" />
+        </shaders>
+
+
+        <materials>
+                <material name="silhouette">
+                        <shader name="toon" >
+                                <values>
+                                        <valueof uniform="mPVM" 
+							 type="RENDERER" context="CURRENT" 
+							 component="PROJECTION_VIEW_MODEL" />
+
+					<valueof uniform="mVM" 
+							 type="RENDERER" context="CURRENT" 
+							 component="VIEW_MODEL" />
+
+					<valueof uniform="mNormal" 
+							 type="RENDERER" context="CURRENT" 
+							 component="NORMAL" />
+
+					<valueof uniform="mView" 
+							 type="RENDERER" context="CURRENT" 
+							 component="VIEW" />
+							 
+					<valueof uniform="lineColor"
+							 type="RENDERER" context="CURRENT"
+							 component="LineColor" />
+
+					<valueof uniform="edgeOverdraw"
+							 type="RENDERER" context="CURRENT"
+							 component="PctExtend" />
+
+					<valueof uniform="edgeWidth"
+							 type="RENDERER" context="CURRENT"
+							 component="EdgeWidth" />
+
+					<!-- <valueof uniform="normalThreshold"
+							 type="RENDERER" context="CURRENT"
+							 component="NormalThreshold" /> -->
+
+					<valueof uniform="lightDir" 
+							 type="LIGHT" context="Sun"
+							 component="DIRECTION" />
+
+                                        <valueof uniform="num_shades" type="RENDERER"
+                                                component="num_shades" />                         
+                                </values>
+                        </shader>
+                </material>
+        </materials>
+</materialLib>

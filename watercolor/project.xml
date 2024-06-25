@@ -10,7 +10,7 @@
 		
 		<viewports>
 			<viewport name="MainViewport">
-				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" /> <!-- white window when launched -->
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
 			</viewport>
 		</viewports>
 		
@@ -27,7 +27,7 @@
 		<lights>
 			<light name="Sun" type="directional">
 				<DIRECTION x="-3" y="-3" z="-3" />
-				<COLOR r="0.9" g="0.9" b="0.9" />
+				<COLOR r="0.0" g="0.9" b="0.9" />
 			</light>
 		</lights>
 		
@@ -36,17 +36,20 @@
 		</materialLibs> 
 
 	</assets>
-	
+
+
 	<pipelines>
-		<pipeline name="NPR" default="true">
-			<pass class="default" name="sobelPass" >
+		<pipeline name="buffer">
+			<pass class="default" name="bufferPass" >
+				<COLOR_CLEAR value = "true" />
 				<scenes>
-					<scene name ="teapot" />  
+					<scene name="teapot" />
 				</scenes>
 				<camera name="MainCamera" />
-				<materialMaps>
-					<map fromMaterial="*" toMaterial="sobel" toLibrary="NPR" />
-				</materialMaps>
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<renderTarget name = "buffer" fromLibrary="NPR" />
 			</pass>
 		</pipeline>
 	</pipelines>
